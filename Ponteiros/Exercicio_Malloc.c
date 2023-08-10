@@ -9,11 +9,11 @@ int main(){
     
     if(p){ //testa se memória foi alocada
 
-        printf("Memória alocada com sucesso.\n");
+        printf("Memória alocada com sucesso!.\n");
 
     }else{
         
-        printf("Não foi possivel alocar a memória.\n");
+        printf("Não foi possivel alocar a memória!.\n");
         
         return 0; //finaliza o programa
 
