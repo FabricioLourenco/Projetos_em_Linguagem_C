@@ -11,11 +11,9 @@ int cheia(tipo_pilha *ponteiro){
 
 	if (ponteiro->topo == (MAX-1)){		
 
-		printf("\nA pilha esta cheia!!!\n");
-		return 0;		
+		printf("\nA pilha esta cheia!!!\n");	
 	}else{
 
-		ponteiro->topo++;
 		return 1;
 	}
 }
@@ -23,8 +21,7 @@ int vazia(tipo_pilha *ponteiro){
 
 	if (ponteiro->topo == (-1)){		
 
-		printf("\nA pilha esta vazia!!!\n");
-			
+		printf("\nA pilha esta vazia!!!\n");		
 	}else{
 		
 		return 1;
@@ -34,6 +31,7 @@ void push(tipo_pilha *ponteiro){
 
 	if (cheia(ponteiro) == 1){
 
+		ponteiro->topo++;
 		printf("Para a posicao %d da pilha, digite um valor: ", (ponteiro->topo));
 		scanf("%d", (ponteiro->dados + ponteiro->topo));				
 	}	
@@ -42,15 +40,13 @@ void pop(tipo_pilha *ponteiro){
 
 	if (vazia(ponteiro) == 1){
 
-	printf("Apos retirar o elemento %d, da posicao %d, o topo voltou a estar na posicao %d e o elemento atual e: %d\n", 
-	*(ponteiro->dados+(ponteiro->topo+1)), (ponteiro->topo+1) , ponteiro->topo, *(ponteiro->dados+ponteiro->topo));	
-	ponteiro->topo--;					
+		printf("Apos retirar o elemento %d, da posicao %d, o topo voltou a estar na posicao %d e o elemento atual e: %d\n", *(ponteiro->dados+(ponteiro->topo+1)), (ponteiro->topo+1) , ponteiro->topo, *(ponteiro->dados+ponteiro->topo));	
+		ponteiro->topo--;					
 	}
 }
 void display(tipo_pilha *ponteiro){
 
-	int i;
-	
+	int i;	
 	for (i = ponteiro->topo; i >= 0 ; i--){
 
 		printf("O elemento na posicao %d da pila e: %d\n", i,*(ponteiro->dados+i)); 		
@@ -60,10 +56,8 @@ int main(){
 
 	tipo_pilha *ponteiro;
 	ponteiro =(tipo_pilha*)malloc(sizeof(tipo_pilha));
-
-	int opcao;
-
 	ponteiro->topo = -1;
+	int opcao;
 
 	do{
         printf("\n=====ALOCACAO EM PILHA=====\n\n");
@@ -87,7 +81,8 @@ int main(){
             printf("Esta opcao e invalida!\n");
         }
     }while(opcao!=0);
-     printf("\nVoce optou por sair do programa, as operacoes foram finalizadas\n");
+    
+	printf("\nVoce optou por sair do programa, as operacoes foram finalizadas\n");
 
 	free(ponteiro);
     return 0;
