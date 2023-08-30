@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 4
+#define MAX 5
 
 typedef struct _pilha{
 	int dados[MAX];
@@ -39,9 +39,9 @@ void push(tipo_pilha *ponteiro){
 void pop(tipo_pilha *ponteiro){
 
 	if (vazia(ponteiro) == 1){
-
-		printf("Apos retirar o elemento %d, da posicao %d, o topo voltou a estar na posicao %d e o elemento atual e: %d\n", *(ponteiro->dados+(ponteiro->topo+1)), (ponteiro->topo+1) , ponteiro->topo, *(ponteiro->dados+ponteiro->topo));	
-		ponteiro->topo--;					
+		
+		printf("\nElemento retirado!!!\n");	
+		ponteiro->topo--;						
 	}
 }
 void display(tipo_pilha *ponteiro){
