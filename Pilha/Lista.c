@@ -14,7 +14,7 @@ typedef struct nodo{
 	struct nodo *prox;
 }tipo_nodo;
 
-tipo_nodo* inserir(tipo_nodo *ponteiroLista){
+tipo_nodo *inserir(tipo_nodo *ponteiroLista){
 
 	tipo_nodo *novoNodo = (tipo_nodo*) malloc(sizeof(tipo_nodo));
 	
@@ -36,43 +36,54 @@ tipo_nodo* inserir(tipo_nodo *ponteiroLista){
 
 tipo_nodo* remover(tipo_nodo *ponteiroLista){
 
-	int codigo = 0;
-	printf("\n===== REMOVENDO ITEM =====\n");
-	printf("\nDigite o codigo do produto: ");
-	scanf("%d", &codigo);
+	if (ponteiroLista != NULL){
+		
+		int codigo = 0;
+		int excluido = 0;
+		printf("\n===== REMOVENDO ITEM =====\n");
+		printf("\nDigite o codigo do produto: ");
+		scanf("%d", &codigo);
 	
-	tipo_nodo* remover = NULL;
-	tipo_nodo* atual = ponteiroLista;
+		tipo_nodo* anterior = NULL;
+		tipo_nodo* atual = ponteiroLista;
 	
-	while (atual != NULL && (atual->produto.codigo) != codigo){
+		while (atual != NULL && (atual->produto.codigo) != codigo){
 
-		remover = atual;
-		atual = atual->prox;
-	}
-	if (atual == NULL){
+			anterior = atual;
+			atual = atual->prox;
+		}
+		if (atual == NULL){
 
+			printf("\nO elemento nao foi encontrado!\n");
+			return ponteiroLista;
+		}
+		if (anterior == NULL){
+						
+			ponteiroLista = atual->prox;			
+		}else{
+			
+			anterior->prox = atual->prox;
+		}	
 		return ponteiroLista;
-	}
-	if (remover == NULL){
-
-		ponteiroLista = atual->prox;
 	}else{
-
-		remover->prox = atual->prox;
-	}
-
-	return remover;
+		printf("\nA lista esta vazia!\n");
+	}	
 }
 
 void visualisar(tipo_nodo *ponteiroLista){
 
 	tipo_nodo *i;	
-
-	for (i = ponteiroLista; i != NULL; i = i->prox){
+	if (ponteiroLista != NULL){
+		
+		for (i = ponteiroLista; i != NULL; i = i->prox){
 
 		printf("\n===== PRODUTO =====\n");
-		printf("O codigo e: %d\nO nome do produto e: %s\nO valor do produto e: %.2f\n", (i->produto.codigo), (i->produto.nome), (i->produto.preco));		
-	}
+		printf("Codigo: %d\nNome do produto: %s\nValor do produto: %.2f\n", (i->produto.codigo), (i->produto.nome), (i->produto.preco));		
+		}
+	}else{
+
+		printf("\nA lista esta vazia!\n");
+	}		
 }
 
 int main(){
@@ -88,14 +99,13 @@ int main(){
 
         if(opcao==1){
 
-           ponteiroLista = inserir(ponteiroLista);
-
+        	ponteiroLista = inserir(ponteiroLista);
         }else if(opcao==2){
 
-            remover(ponteiroLista);
+        	ponteiroLista = remover(ponteiroLista);
         }else if(opcao==3){
 
-            visualisar(ponteiroLista);
+        	visualisar(ponteiroLista);
         }else if(opcao==0){
 			
             break;
@@ -105,7 +115,7 @@ int main(){
         }
     }while(opcao!=0);
     
-	printf("\nVoce optou por sair do programa, as operacoes foram finalizadas\n");
+	printf("\nVoce optou por sair do programa, as operacoes foram finalizadas!\n");
 
 }
 
