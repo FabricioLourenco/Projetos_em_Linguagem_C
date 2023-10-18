@@ -22,6 +22,7 @@ tipo_nodo *inserir(tipo_nodo *ponteiroLista){
 	
 	printf("\nDigite o codigo do produto: ");
 	scanf("%d", &(novoNodo->produto.codigo));
+
 	
 	printf("Digite o nome do produto: ");
 	scanf("%s", (novoNodo->produto.nome));
