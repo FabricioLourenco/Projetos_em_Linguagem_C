@@ -1,4 +1,4 @@
-**README.md - Sistema de Consulta e Cadastro de Funcionários**
+**Sistema de Consulta e Cadastro de Funcionários**
 
 Esta solução apresenta uma forma simples e pratica para efetuar o cadastro de funcionários no meio empresarial. O projeto tem incluso além do cadastro a função de reajuste salarial para melhor atender as demandas do mercado de trabalho.
 
